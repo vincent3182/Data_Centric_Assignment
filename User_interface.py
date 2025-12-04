@@ -1,6 +1,7 @@
 import tkinter as tk 
 from tkinter import ttk
 import DbToDf as db
+import abctoDB as abc
 
 def homepage(): #home page
     global home  # visible outside this funct
@@ -12,14 +13,15 @@ def homepage(): #home page
 
     tk.Label(home, text="Home Page", font=("Calibri", 20)).pack(pady=1)#title label
     
-    
+    tk.Button(home, text="Upload Files to Database", command=LoadFilesToDB, width=20, height=2).pack(pady=10)   # button opens database uploader page     
+
     tk.Button(home, text="Search by Title", command=open_title_search, width=20, height=2).pack(pady=10)    # button opens title search page
     
   
     tk.Button(home, text="Search by Tune Type", command=open_tune_search, width=20, height=2).pack(pady=10)   # button opens tune search page 
     
 
-    tk.Button(home, text = "Search by Book Number", command=open_book_search, width = 20, height  = 2 ).pack(pady=10)
+    tk.Button(home, text = "Search by Book Number", command=open_book_search, width = 20, height  = 2).pack(pady=10)
     home.mainloop()  # Keep the window open 
 
 def open_title_search():
@@ -34,6 +36,25 @@ def open_book_search():
     home.destroy()  # Close the homepage window
     book_search_page()  # Open book search
 
+def LoadFilesToDB():
+    home.destroy()
+    LoadFiles_Page()
+
+def LoadFiles_Page():
+    window = tk.Tk()  # new window 
+    window.title("Load ABC Title to DataBase")  # window title
+    window.geometry("600x500")  #  window size
+    window.configure(bg= "grey") #black backround
+
+    tk.Label(window,text = "Upload ABC to DataBase",font= ("Calibri" ,20)).pack()
+    tk.Button(window,text ="Upload", command=abc.upload, width = 20, height  = 2).pack()
+
+    def go_back_for_abc():#goback inside corresponding funct
+        window.destroy()
+        homepage()
+
+    tk.Button(window, text = "Return", command = go_back_for_abc, width = 20, height= 2).pack()
+
 # titel search
 def title_search_page():
     window = tk.Tk()  # new window for title search
@@ -42,6 +63,8 @@ def title_search_page():
     window.configure(bg= "grey") #black backround
     
     tk.Label(window,text = "Title Search",font= ("Calibri" ,20)).pack()
+
+    tk.Button(window, text = "Upload to DataBase", font = ("Calibri", 20)).pack()
 
     def search(): #search funct inside titleseaech window
 

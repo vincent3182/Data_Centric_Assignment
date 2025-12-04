@@ -116,6 +116,6 @@ def load_all_books():
                     Tunes = parse_abc(path, folder)
                     insert_tune(Tunes)
 
-if __name__ == "__main__":
+def upload():
     load_all_books()
     print("Done loading all books!")
