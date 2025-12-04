@@ -43,8 +43,14 @@ def title_search_page():
         for index, row in results.iterrows():  # Loop through each row, 
             # display title - tune_type ---------ADD book number later
             displayLine=(tk.END, f"{row['title']} - {row['tune_type']}\n")
+            
             text_results.insert(tk.END, displayLine)
     
+    #go back funct must be inside the search funct
+    def go_back_for_title():
+        window.destroy()
+        homepage()
+
     tk.Label(window, text="Search Title:").pack()  # display label
     entry = tk.Entry(window, width=40)  #  text entry box
     entry.pack()  # Display the entry box
@@ -55,7 +61,7 @@ def title_search_page():
     text_results.pack()  #text box
     
     # return button that closes this window and returns to homepage
-    tk.Button(window, text="Back to Home", command=go_back_for_title(window)).pack(pady=10)
+    tk.Button(window, text="Back to Home", command=go_back_for_title).pack(pady=10)
     
     window.mainloop()  # Keep the window open
 
@@ -68,13 +74,19 @@ def tune_search_page():
     def search():
         search_term = entry.get()  # reterieve text that user typed in the entry box
         results = db.search_by_tune_type(search_term)  # Search database by tune type
-        
+
+
         text_results.delete(1.0, tk.END)  # delete previous results from text box
 
         for _, row in results.iterrows():  # Loop through each result row
             # Insert each result into the text box (tune_type - title)
             text_results.insert(tk.END, f"{row['tune_type']} - {row['title']}\n")
     
+
+    def go_back_for_tune():#goback inside corresponding funct
+        window.destroy()
+        homepage()
+
     tk.Label(window, text="Search Tune Type:").pack()  # display label
     entry = tk.Entry(window, width=40)  #text entry box
     entry.pack()  # Display entry box
@@ -85,17 +97,17 @@ def tune_search_page():
     text_results.pack()  # Display text
     
     # back button that closes window, returns to homepage
-    tk.Button(window, text="Back to Home", command=go_back_for_tune(window)).pack(pady=10) #redirect to homes
+    tk.Button(window, text="Back to Home", command=go_back_for_tune).pack(pady=10) #redirect to homes
     
     window.mainloop()  # Keeps window open
 
-def go_back_for_title(window):
-    title_search_page.destroy  # Close title window
-    homepage()  # Open homepage
+#def go_back_for_title(window):
+ #   title_search_page.destroy  # Close title window
+  #  homepage()  # Open homepage
 
-def go_back_for_tune(window):
-    tune_search_page.destroy  # Close tune window
-    homepage()  # homepage again
+#def go_back_for_tune(window):
+ #   tune_search_page.destroy  # Close tune window
+  #  homepage()  # homepage again
 
 # Start
 homepage()  # Launch by opening homepage
