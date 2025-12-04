@@ -88,7 +88,7 @@ def tune_search_page():
     def search():
         search_term = entry.get()  # reterieve text that user typed in the entry box
         results = db.search_by_tune_type(search_term)  # Search df by tune type
-
+ 
 
         text_results.delete(1.0, tk.END)  # delete previous results from text box
 
