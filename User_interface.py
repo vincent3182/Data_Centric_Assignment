@@ -6,10 +6,11 @@ def homepage(): #home page
     global home  # visible outside this funct
     home = tk.Tk()  # main homepage window
     home.title("ABC Music")  # window title
+    home.configure(bg = "black")
     
     home.geometry("600x500")  # Set window size (width x height)
 
-    tk.Label(home, text="Home Page", font=("Arial", 20)).pack(pady=1)#title label
+    tk.Label(home, text="Home Page", font=("Science Gothic", 20)).pack(pady=1)#title label
     
     
     tk.Button(home, text="Search by Title", command=open_title_search, width=20, height=2).pack(pady=10)    # button opens title search page
@@ -32,8 +33,12 @@ def title_search_page():
     window = tk.Tk()  # new window for title search
     window.title("Search by Title")  # window title
     window.geometry("600x500")  #  window size
+    window.configure(bg= "grey") #black backround
     
+    tk.Label(window,text = "Title Search",font= ("Calibri" ,20)).pack()
+
     def search(): #search funct inside titleseaech window
+
         usersearch = entry.get()  # Get text that user typed
         
         results = db.search_by_title(usersearch)  # Search database by title
@@ -42,7 +47,7 @@ def title_search_page():
 
         for index, row in results.iterrows():  # Loop through each row, 
             # display title - tune_type ---------ADD book number later
-            displayLine=(tk.END, f"{row['title']} - {row['tune_type']}\n")
+            displayLine= "Book: " + str(row['book']) + " Title: " + row['title'] + " Tune: "+ row['tune_type'] + "\n" #convert book no to str
             
             text_results.insert(tk.END, displayLine)
     
@@ -51,13 +56,12 @@ def title_search_page():
         window.destroy()
         homepage()
 
-    tk.Label(window, text="Search Title:").pack()  # display label
     entry = tk.Entry(window, width=40)  #  text entry box
     entry.pack()  # Display the entry box
     
     tk.Button(window, text="Search", command=search).pack()  #  search button calls search()
     
-    text_results = tk.Text(window, height=20, width=60)  # text box for results
+    text_results = tk.Text(window, height=15, width=70)  # text box for results
     text_results.pack()  #text box
     
     # return button that closes this window and returns to homepage
@@ -70,7 +74,11 @@ def tune_search_page():
     window = tk.Tk()  #new window for tune type search
     window.title("Search by Tune Type")  #window title
     window.geometry("600x500")  #window size
-    
+    window.configure(bg = "grey")
+
+    tk.Label(window,text = "Tune Search",font= ("Calibri" ,20)).pack()
+
+
     def search():
         search_term = entry.get()  # reterieve text that user typed in the entry box
         results = db.search_by_tune_type(search_term)  # Search database by tune type
@@ -78,16 +86,15 @@ def tune_search_page():
 
         text_results.delete(1.0, tk.END)  # delete previous results from text box
 
-        for _, row in results.iterrows():  # Loop through each result row
+        for index, row in results.iterrows():  # Loop through each result row
             # Insert each result into the text box (tune_type - title)
-            text_results.insert(tk.END, f"{row['tune_type']} - {row['title']}\n")
-    
+            displayLine= "Book: " + str(row['book']) + " Tune: "+ row['tune_type'] + " Title: " + row['title']+ "\n" #convert book no to str
+            text_results.insert(tk.END, displayLine)
 
     def go_back_for_tune():#goback inside corresponding funct
         window.destroy()
         homepage()
-
-    tk.Label(window, text="Search Tune Type:").pack()  # display label
+    
     entry = tk.Entry(window, width=40)  #text entry box
     entry.pack()  # Display entry box
     
