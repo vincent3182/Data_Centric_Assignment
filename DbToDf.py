@@ -12,7 +12,7 @@ def get_engine():
 def get_all_tunes():
     #Returns a DataFrame with all tunes from the database
     engine = get_engine() #uses the get engine funct
-    sqlquery = "SELECT * FROM tunes"
+    sqlquery = "SELECT * FROM tunes" #query selects everything , df alters data searches rather than multiple sql queries
     df = pd.read_sql(sqlquery, engine)
     return df
 

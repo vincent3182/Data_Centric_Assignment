@@ -17,11 +17,13 @@ def get_connection():
 def parse_abc(path, book):
     
     #Parse an ABC file and return a list of tunes.
+
+
     #book, tune_id, title, alt_title, tune_type, key_signature, notation
     
     Tunes = [] #empty list to store everythig
     current_tune = None
-    header_done = False #fale unless pass K: -the header
+    header_done = False #fale unless pass K: or header
 
     # Read file lines
     with open(path, "r") as f:
@@ -38,7 +40,7 @@ def parse_abc(path, book):
                 "book": book[:4],   #book num
                 "tune_id": line[2:], #evryting after x:
                 "title": "", #T:
-                "alt_title": "", #if another t: present
+                "alt_title": "", #if another t: present sppend..sperarte by a ; 
                 "tune_type": "", #R:
                 "key_signature": "", #k:
                 "notation": "" #after k#
@@ -50,7 +52,7 @@ def parse_abc(path, book):
             if current_tune["title"] == "":
                 current_tune["title"] = line[2:]
             else:
-                current_tune["alt_title"] += line[2:] + "; "
+                current_tune["alt_title"] += line[2:] + "; "#if another t: present and ur still on current tune
 
         # Tune type
         elif line.startswith("R:") and current_tune:
@@ -69,7 +71,7 @@ def parse_abc(path, book):
     if current_tune:
         Tunes.append(current_tune)
 
-    return Tunes
+    return Tunes #returns tunes to whoevr calls it
 
 # INSERT TUNE
 
@@ -110,12 +112,12 @@ def load_all_books():
             print("book number:", folder)#prints out which book is being processed 
 
             for file in os.listdir(folder_path):
-                if file.endswith(".abc"):
+                if file.endswith(".abc"):   #upload if 
                     path = os.path.join(folder_path, file)
                     print(file)
-                    Tunes = parse_abc(path, folder)
+                    Tunes = parse_abc(path, folder) #gets returned value from parse_abc
                     insert_tune(Tunes)
 
-def upload():
+def upload(): #this function is called when button to upload to database is pressed
     load_all_books()
-    print("Done loading all books!")
+    print("Database Upload Success!")

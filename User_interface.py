@@ -21,19 +21,19 @@ def homepage(): #home page
     tk.Button(home, text="Search by Tune Type", command=open_tune_search, width=20, height=2).pack(pady=10)   # button opens tune search page 
     
 
-    tk.Button(home, text = "Search by Book Number", command=open_book_search, width = 20, height  = 2).pack(pady=10)
-    home.mainloop()  # Keep the window open 
+    tk.Button(home, text = "Search by Book Number", command=open_book_search, width = 20, height  = 2).pack(pady=10) #search by book number
+    home.mainloop()  
 
 def open_title_search():
     home.destroy()  # Close the homepage window
     title_search_page()  # Open title search
 
 def open_tune_search():
-    home.destroy()  # Close the homepage window
+    home.destroy()
     tune_search_page()  # Open tune search
 
 def open_book_search():
-    home.destroy()  # Close the homepage window
+    home.destroy()  
     book_search_page()  # Open book search
 
 def LoadFilesToDB():
@@ -68,7 +68,7 @@ def title_search_page():
 
         usersearch = entry.get()  # Get text that user typed
         
-        results = db.search_by_title(usersearch)  # Search df by title
+        results = db.search_by_title(usersearch) # Search df by title
         
         text_results.delete(1.0, tk.END)  # Clear previous results
 
@@ -114,7 +114,7 @@ def tune_search_page():
         text_results.delete(1.0, tk.END)  # delete previous results from text box
 
         for index, row in results.iterrows():  # Loop through each result row
-            # Insert each result into the text box (tune_type - title)
+            # Insert each result intobox (tune_type - title)
             displayLine= "Book: " + str(row['book']) + " Tune: "+ row['tune_type'] + " Title: " + row['title']+ "\n" #convert book no to str
             text_results.insert(tk.END, displayLine)
 
@@ -125,19 +125,19 @@ def tune_search_page():
     entry = tk.Entry(window, width=40)  #text entry box
     entry.pack()  # Display entry box
     
-    tk.Button(window, text="Search", command=search).pack()  #search button that calls search()
+    tk.Button(window, text="Search", command=search).pack()  # button search()
     
-    text_results = tk.Text(window, height=20, width=60)  # text box for results
+    text_results = tk.Text(window, height=20, width=60)  # box for results
     text_results.pack()  # Display text
     
-    # back button that closes window, returns to homepage
+    #button that closes window returns to home
     tk.Button(window, text="Back to Home", command=go_back_for_tune).pack(pady=10) #redirect to homes
     
     window.mainloop()  # Keeps window open
 
 #search by book number
 def book_search_page():
-    window = tk.Tk()  #new window for tune type search
+    window = tk.Tk()  #new window for book type search
     window.title("Search by Book Number")  #window title
     window.geometry("600x500")  #window size
     window.configure(bg = "grey")
@@ -153,7 +153,7 @@ def book_search_page():
         text_results.delete(1.0, tk.END)  # delete previous results from text box
 
         for index, row in results.iterrows():  # Loop through each result row
-            # Insert each result into the text box (tune_type - title)
+            # Insert each result into the text box (book- tune_type - title)
             displayLine= "Book: " + str(row['book']) + " Tune: "+ row['tune_type'] + " Title: " + row['title']+ "\n" #convert book no to str
             text_results.insert(tk.END, displayLine)
 
@@ -166,7 +166,7 @@ def book_search_page():
     entry = tk.Entry(window, width=40)  #text entry box
     entry.pack()  # Display entry box
     
-    tk.Button(window, text="Search", command=search).pack()  #search button that calls search()
+    tk.Button(window, text="Search", command=search).pack()  #button calls search()
     
     text_results = tk.Text(window, height=20, width=60)  # text box for results
     text_results.pack()  # Display text
