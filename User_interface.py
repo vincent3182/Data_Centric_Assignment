@@ -64,8 +64,6 @@ def title_search_page():
     
     tk.Label(window,text = "Title Search",font= ("Calibri" ,20)).pack()
 
-    tk.Button(window, text = "Upload to DataBase", font = ("Calibri", 20)).pack()
-
     def search(): #search funct inside titleseaech window
 
         usersearch = entry.get()  # Get text that user typed
@@ -179,9 +177,6 @@ def book_search_page():
     window.mainloop()
 
 
-#def go_back_for_tune(window):
- #   tune_search_page.destroy  # Close tune window
-  #  homepage()  # homepage again
 
 # Start
 homepage()  # Launch by opening homepage
