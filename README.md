@@ -11,6 +11,7 @@ Student Number:C24498082
 
 # Screen shot of Search features
 <img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/8cc1237f-6506-4050-b657-95e20d69e810" />
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/6274ae17-1385-4126-bdde-507eb250f99c" />
 
 
 # Description of the project 
