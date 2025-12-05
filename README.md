@@ -62,8 +62,3 @@ i am proud of turning the project into a working GUI app and getting the abc par
 # What I learned
 i learned how to parse scructured .abc files into a MySQL database and have a simple GUI with Tkinter. This project helped me understand how different parts of an program bind together to make a full application.
 
-
-
-
->>>>>>> 353c211a23dba558be74420e556487c25535405b
-
