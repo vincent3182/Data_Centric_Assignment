@@ -7,6 +7,7 @@ Vincent Mikalauskas
 Student Number:C24498082
 
 ScreenShot of Main GUI Window
+<img width="738" height="652" alt="image" src="https://github.com/user-attachments/assets/99007875-e24d-45a0-bcc3-c97118f9d3a9" />
 
 Screenshot of Parsing
 
