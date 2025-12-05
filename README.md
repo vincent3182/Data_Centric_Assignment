@@ -1,16 +1,17 @@
-<<<<<<< HEAD
-# Data_Centric_Assignment
-DataCentric assignment : read .abc files , parse , add to a sql database(ive chosen to use localhost/myphpadmin) then create a simple ui which allowss for user to search items within database
-=======
 # Data_Centric_Assignment 2025
 Vincent Mikalauskas
 Student Number:C24498082
 
-ScreenShot of Main GUI Window
+# ScreenShot of Main GUI Window
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/99007875-e24d-45a0-bcc3-c97118f9d3a9" />
 
-Screenshot of Parsing
+# Screenshot of Parsing
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/402b615f-7d13-48d4-b77d-9317a69a1614" />
 
-Screen shot of Search features
+
+# Screen shot of Search features
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/8cc1237f-6506-4050-b657-95e20d69e810" />
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/6274ae17-1385-4126-bdde-507eb250f99c" />
 
 
 # Description of the project 
@@ -60,9 +61,4 @@ i am proud of turning the project into a working GUI app and getting the abc par
 
 # What I learned
 i learned how to parse scructured .abc files into a MySQL database and have a simple GUI with Tkinter. This project helped me understand how different parts of an program bind together to make a full application.
-
-
-
-
->>>>>>> 353c211a23dba558be74420e556487c25535405b
 
